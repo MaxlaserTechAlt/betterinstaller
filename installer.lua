@@ -1,5 +1,5 @@
 local getfile = function(name)
-    return "return loadstring(http_get('https://storage.renderintents.lol/packages/".. name .. ".lua?ria=".. getgenv().ria.. "'))()"
+    return "return loadstring(http_get('https://storage.renderintents.lol/packages/".. name .. ".lua?ria=".. ria.. "'))()"
 end
 if not isfolder('vape') then
     makefolder('vape')
@@ -16,7 +16,8 @@ end
 if not isfolder('vape/Render/scripts') then
     makefolder('vape/Render/scripts')
 end
-for i,v in {'Universal', 'MainScript', 'loader', 'GuiLibrary'} do
+writefile('vape/loader.lua', "return loadstring(game:HttpGet('https://storage.renderintents.lol/packages/loader.lua?ria=".. ria.. "'))()")
+for i,v in {'Universal', 'MainScript', 'GuiLibrary'} do
     writefile(`vape/{v}.lua`, getfile(v))
 end
 for i,v in {'6872274481', '12552538292', '17750024818', '893973440'} do
